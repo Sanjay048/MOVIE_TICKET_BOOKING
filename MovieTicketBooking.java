@@ -69,12 +69,15 @@ class BookingSystem {
         int totalCost = numSeats * TICKET_COST;
         System.out.println("Total cost: " + totalCost + " RS.");
 
-        if (processPayment(totalCost)) {
-            movie.bookSeats(numSeats);
-            bookings.add(numSeats + " seats booked for " + movie.getTitle() + " at a cost of " + totalCost + " units.");
-            System.out.println(numSeats + " seats booked for " + movie.getTitle());
-        } else {
-            System.out.println("Payment failed. Booking not confirmed.");
+        while (true) {
+            if (processPayment(totalCost)) {
+                movie.bookSeats(numSeats);
+                bookings.add(numSeats + " seats booked for " + movie.getTitle() + " at a cost of " + totalCost + " units.");
+                System.out.println(numSeats + " seats booked for " + movie.getTitle());
+                break;
+            } else {
+                System.out.println("Payment failed. Redirecting back to payment...");
+            }
         }
     }
 
@@ -125,8 +128,8 @@ public class MovieTicketBooking {
         while (true) {
             System.out.println("---------------------------------------");
             System.out.println("         MOVIE TICKET BOOKING          ");
-            System.out.print("---------------------------------------");
-            System.out.println("\n1. View Movies");
+            System.out.println("---------------------------------------");
+            System.out.println("1. View Movies");
             System.out.println("2. Book Ticket");
             System.out.println("3. View Bookings");
             System.out.println("4. Exit");
