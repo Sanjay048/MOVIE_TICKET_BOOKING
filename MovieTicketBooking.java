@@ -74,9 +74,10 @@ class BookingSystem {
                 movie.bookSeats(numSeats);
                 bookings.add(numSeats + " seats booked for " + movie.getTitle() + " at a cost of " + totalCost + " units.");
                 System.out.println(numSeats + " seats booked for " + movie.getTitle());
-                break;
+                break; // Exit the loop if payment is successful
             } else {
                 System.out.println("Payment failed. Redirecting back to payment...");
+                // Continue the loop to try payment again
             }
         }
     }
